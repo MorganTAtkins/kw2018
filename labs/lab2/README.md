@@ -4,10 +4,10 @@ In this lab we will write a Dockerfile, build a Docker image and Run a Docker co
 Our Docker container will read a remote storage location and display pictures
 
 The `Dockerfile` this should containes this:
-[Dockerfile](labs/lab2/Dockerfile)
+[Dockerfile](Dockerfile)
 
 The `requirements.txt` this should contianers this:
-[requirements.txt](labs/lab2/requirements.txt)
+[requirements.txt](requirements.txt)
 
 To BUILD our image, run the following commad:
 ```

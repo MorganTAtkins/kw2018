@@ -2,10 +2,10 @@
 In this lab we will inspect a Dockerfile, build a Docker image and Run a Docker container.
 
 The `Dockerfile` this should containes this:
-[Dockerfile](labs/lab1/Dockerfile)
+[Dockerfile](Dockerfile)
 
 The `requirements.txt` this should contianers this:
-[requirements.txt](labs/lab1/requirements.txt)
+[requirements.txt](requirements.txt)
 
 To BUILD our image, run the following commad:
 ```
