@@ -9,7 +9,7 @@ The `requirements.txt` this should contianers this:
 
 To BUILD our image, run the following commad:
 ```
-docker image build -t kw-picture-uploader .
+docker image build -t kw-picture-uploader --build-arg app_name=simple-uploader .
 ```
 
 To RUN our image as a container, run the following commad:

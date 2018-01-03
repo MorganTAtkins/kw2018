@@ -11,7 +11,7 @@ The `requirements.txt` this should contianers this:
 
 To BUILD our image, run the following commad:
 ```
-docker image build -t kw-picture-unloader .
+docker image build -t kw-picture-unloader --build-arg app_name=get-image .
 ```
 
 To RUN our image as a Contianer, run the following commad:
