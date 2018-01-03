@@ -1,0 +1,56 @@
+version: '3.3'
+
+services:
+  uploader:
+    image: matkins/simple-uploader:latest
+    build: ./labs/lab1
+    environment:
+      MINIO_ACCESS_KEY: 'accesskey'
+      MINIO_SECRET_KEY: 'secretkey'
+      MINIO_URL: 'minio:9000'
+    networks:
+      - kw2018
+    ports:
+      - target: 8000
+        published: 8000
+        protocol: tcp
+        mode: host
+
+  unloader:
+    image: dtr.ecs.digital/matkins/minio-get-pictures
+    build: ./labs/lab2
+    environment:
+      MINIO_ACCESS_KEY: 'accesskey'
+      MINIO_SECRET_KEY: 'secretkey'
+      MINIO_URL: 'minio:9000'
+    networks:
+      - kw2018
+    ports:
+      - target: 8000
+        published: 7000
+        protocol: tcp
+        mode: host
+
+  minio:
+    image: minio/minio:latest
+    command: server /data
+    environment:
+      MINIO_ACCESS_KEY: 'accesskey'
+      MINIO_SECRET_KEY: 'secretkey'
+    networks:
+      - kw2018
+    ports:
+      - target: 9000
+        published: 9000
+        protocol: tcp
+        mode: host
+    volumes:
+      - type: volume
+        source: minio-data
+        target: /data
+
+networks:
+  kw2018:
+
+volumes:
+  minio-data:

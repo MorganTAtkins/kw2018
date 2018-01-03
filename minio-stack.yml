@@ -1,0 +1,30 @@
+version: '3.3'
+
+services:
+  minio:
+    image: minio/minio:latest
+    command: server /data
+    environment:
+      MINIO_ACCESS_KEY: 'accesskey'
+      MINIO_SECRET_KEY: 'secretkey'
+    networks:
+      - ucp-hrm
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == swm-node-01
+      # Service labels
+      labels:
+        com.docker.ucp.access.label: '/System/Critical'
+        com.docker.ucp.mesh.http: 'internal_port=9000,external_route=http://kw2018-minio.svc.ecs.digital' # HRM
+    # Container labels
+    labels:
+      com.docker.ucp.access.label: '/System/Critical'
+
+networks:
+  ucp-hrm:
+    external: true
+
+volumes:
+  minio-data:

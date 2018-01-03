@@ -1,0 +1,7 @@
+Flask==0.10.1
+minio
+boto
+pyperclip
+minio
+boto3
+requests

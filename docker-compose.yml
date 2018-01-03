@@ -1,0 +1,34 @@
+version: '3.3'
+
+services:
+  uploader:
+    image: matkins/simple-uploader:latest
+    build:
+      context: ./labs/lab1
+      args:
+        app_name: 'simple-uploader'
+    environment:
+      MINIO_ACCESS_KEY: 'accesskey'
+      MINIO_SECRET_KEY: 'secretkey'
+      MINIO_URL: 'kw2018-minio.svc.ecs.digital'
+    ports:
+      - target: 8000
+        published: 8000
+        protocol: tcp
+        mode: host
+
+  unloader:
+    image: dtr.ecs.digital/matkins/minio-get-pictures
+    build:
+      context: ./labs/lab2
+      args:
+        app_name: 'get-image'
+    environment:
+      MINIO_ACCESS_KEY: 'accesskey'
+      MINIO_SECRET_KEY: 'secretkey'
+      MINIO_URL: 'kw2018-minio.svc.ecs.digital'
+    ports:
+      - target: 8000
+        published: 7000
+        protocol: tcp
+        mode: host
