@@ -11,12 +11,12 @@ The `requirements.txt` this should contianers this:
 
 To BUILD our image, run the following commad:
 ```
-docker image build -t kw-picture-unloader --build-arg app_name=get-image .
+docker image build -t simple-picture-unloader --build-arg app_name=get-image .
 ```
 
 To RUN our image as a Contianer, run the following commad:
 ```
-docker container run -it --rm --name kw-picture-unloader -p 8000:8000 -e AWS_ACCESS_KEY_ID="" -e AWS_SECRET_ACCESS_KEY="" kw-picture-unloader:latest
+docker container run -it --rm --name simple-picture-unloader -p 8000:8000 -e AWS_ACCESS_KEY_ID="" -e AWS_SECRET_ACCESS_KEY="" simple-picture-unloader:latest
 ```
 Navigate to the web UI and upload view the Pictures
-Link: [kw-picture-unloader](localhost:8000)
+Link: [simple-picture-unloader](localhost:8000)
